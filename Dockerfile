@@ -1,10 +1,18 @@
-FROM alpine:latest
-
-MAINTAINER Open Source Services [opensourceservices.fr]
+FROM alpine:3.12
 
 RUN apk --update add \
-    openssh && \
-    rm -rf /var/cache/apk/*
+      bash \
+      openssh \
+      alpine-sdk \
+      gdb \
+      libmicrohttpd \
+      libmicrohttpd-dev \
+      mosquitto \
+      mosquitto-dev \
+      openssl \
+      openssl-dev \
+   && echo "#include <unistd.h>" > /usr/include/sys/unistd.h \    
+   && rm -rf /var/cache/apk/*
 
 COPY src/ .
 
