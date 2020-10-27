@@ -41,7 +41,7 @@ function createUser() {
     fi
 
     adduser $useraddOptions $user
-    chown root:root /home/$user
+    chown $user:$user /home/$user
     chmod 755 /home/$user
 
     if [ -z "$pass" ]; then
@@ -56,7 +56,6 @@ function createUser() {
       chown $user /home/$user/.ssh/authorized_keys
       chmod 600 /home/$user/.ssh/authorized_keys
     fi
-
 }
 
 if [[ -z $1 || $1 =~ ^--help$|^-h$ ]]; then
