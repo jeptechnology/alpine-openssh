@@ -26,7 +26,14 @@ chmod 777 /sys/devices/soc0/pwm_leds/leds/hub\:led\:red/brightness
 chmod 777 /sys/devices/soc0/pwm_leds/leds/hub\:led\:green/brightness
 chmod 777 /sys/devices/soc0/pwm_leds/leds/hub\:led\:blue/brightness
 
-# symbolic link to allow volume to led's to be shared
-ln -s /sys/devices/soc0/pwm_leds/leds/hub\:led\:red/ ~/led/red
-ln -s /sys/devices/soc0/pwm_leds/leds/hub\:led\:green/ ~/led/green
-ln -s /sys/devices/soc0/pwm_leds/leds/hub\:led\:blue/ ~/led/blue
+# mount led's in a way that can be shared to docker containers
+GREEN_LED_PATH=/home/fio/led/green
+mkdir -p ${GREEN_LED_PATH}
+chmod 755 ${GREEN_LED_PATH}
+sudo mount --bind /sys/devices/soc0/pwm_leds/leds/hub\:led\:green ${GREEN_LED_PATH}
+
+RED_LED_PATH=/home/fio/led/red
+mkdir -p ${RED_LED_PATH}
+chmod 755 ${RED_LED_PATH}
+sudo mount --bind /sys/devices/soc0/pwm_leds/leds/hub\:led\:red ${RED_LED_PATH}
+
