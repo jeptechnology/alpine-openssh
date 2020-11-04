@@ -40,7 +40,10 @@ function createUser() {
         addgroup -g $gid $gid
     fi
 
+    # add user
     adduser $useraddOptions $user
+    # add this user to the "dialout" group - this enables access to the /dev/ttyXXX UART devices
+    adduser $user dialout
     chown $user:$user /home/$user
     chmod 755 /home/$user
 
