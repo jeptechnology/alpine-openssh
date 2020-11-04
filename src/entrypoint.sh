@@ -75,6 +75,5 @@ done
 # generate host keys if not present
 ssh-keygen -A
 
-# do not detach (-D), log to stderr (-e), passthrough other arguments
-# exec /usr/sbin/sshd -D -e $@
-exec /usr/sbin/sshd -D
+# do not detach (-D), log to stderr (-e), use port 2222 so as not to clash with host ssh port
+exec /usr/sbin/sshd -D -e -p 2222
