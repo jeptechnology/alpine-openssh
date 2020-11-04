@@ -24,6 +24,7 @@ EFR32_GPIO_PATH=/home/fio/efr32io
 mkdir -p ${EFR32_GPIO_PATH}
 chmod 755 ${EFR32_GPIO_PATH}
 mount --bind /sys/devices/soc0/soc/2000000.aips-bus/20a0000.gpio/gpiochip1/gpio/gpio34 ${EFR32_GPIO_PATH}
+chmod 777 ${EFR32_GPIO_PATH}/value
 
 echo "Preparing LEDs for output..."
 # permit user operations on LED brightness
