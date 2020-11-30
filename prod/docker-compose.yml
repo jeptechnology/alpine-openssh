@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  wiser-home:
+    build:
+      context: .
+      network: host
+    command: ["/usr/bin/WiserHomeLinux","-t"]
+    devices:
+      - "/dev/ttymxc2:/dev/ttyEFR32"
+    volumes:
+      - "/home/fio/led/:/led"
+      - "/home/fio/efr32io:/efr32io"
+      - "/sys/class/gpio/gpio119:/gpioSetupButton"
+      - "/tmp:/tmp"
