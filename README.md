@@ -7,7 +7,9 @@ Usage for development
 ### Create and deploy development container with gdb server (port 2159) and ssh server (port 2222)
 
 `./create.sh` - Create the development docker container
+
 `./run.sh`    - Run the development docker container
+
 `./stop.sh`   - Stop any running development docker container
 
 Usage for production
@@ -22,6 +24,7 @@ Copy this binary into `./prod/WiserHomeLinux`
 ### Deploy using Docker Compose
 
 From schneider hub:
+
 ```
 cd prod
 sudo docker-compose up
